@@ -1,0 +1,394 @@
+%%%%%%%%%%%%  Generated using docx2latex.com  %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%  v2.0.0-beta  %%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage[normalem]{ulem}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[backend=biber,
+style=numeric,
+sorting=none,
+isbn=false,
+doi=false,
+url=false,
+]{biblatex}\addbibresource{bibliography.bib}
+
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{ragged2e}
+\usepackage[svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{longtable}
+\usepackage{changepage}
+\usepackage{setspace}
+\usepackage{hhline}
+\usepackage{multicol}
+\usepackage{tabto}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{fancyhdr}
+\usepackage[toc,page]{appendix}
+\usepackage[hidelinks]{hyperref}
+\usetikzlibrary{shapes.symbols,shapes.geometric,shadows,arrows.meta}
+\tikzset{>={Latex[width=1.5mm,length=2mm]}}
+\usepackage{flowchart}\usepackage[paperheight=11.69in,paperwidth=8.27in,left=0.98in,right=0.98in,top=0.98in,bottom=0.98in,headheight=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\TabPositions{0.49in,0.98in,1.47in,1.96in,2.45in,2.94in,3.43in,3.92in,4.41in,4.9in,5.39in,5.88in,}
+
+\urlstyle{same}
+
+
+ %%%%%%%%%%%%  Set Depths for Sections  %%%%%%%%%%%%%%
+
+% 1) Section
+% 1.1) SubSection
+% 1.1.1) SubSubSection
+% 1.1.1.1) Paragraph
+% 1.1.1.1.1) Subparagraph
+
+
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+
+ %%%%%%%%%%%%  Set Depths for Nested Lists created by \begin{enumerate}  %%%%%%%%%%%%%%
+
+
+\setlistdepth{9}
+\renewlist{enumerate}{enumerate}{9}
+		\setlist[enumerate,1]{label=\arabic*)}
+		\setlist[enumerate,2]{label=\alph*)}
+		\setlist[enumerate,3]{label=(\roman*)}
+		\setlist[enumerate,4]{label=(\arabic*)}
+		\setlist[enumerate,5]{label=(\Alph*)}
+		\setlist[enumerate,6]{label=(\Roman*)}
+		\setlist[enumerate,7]{label=\arabic*}
+		\setlist[enumerate,8]{label=\alph*}
+		\setlist[enumerate,9]{label=\roman*}
+
+\renewlist{itemize}{itemize}{9}
+		\setlist[itemize]{label=$\cdot$}
+		\setlist[itemize,1]{label=\textbullet}
+		\setlist[itemize,2]{label=$\circ$}
+		\setlist[itemize,3]{label=$\ast$}
+		\setlist[itemize,4]{label=$\dagger$}
+		\setlist[itemize,5]{label=$\triangleright$}
+		\setlist[itemize,6]{label=$\bigstar$}
+		\setlist[itemize,7]{label=$\blacklozenge$}
+		\setlist[itemize,8]{label=$\prime$}
+
+\setlength{\topsep}{0pt}\setlength{\parskip}{8.04pt}
+\setlength{\parindent}{0pt}
+
+ %%%%%%%%%%%%  This sets linespacing (verticle gap between Lines) Default=1 %%%%%%%%%%%%%%
+
+
+\renewcommand{\arraystretch}{1.3}
+
+\title{Tutoriel PrimeFaces}
+\date{}
+
+
+%%%%%%%%%%%%%%%%%%%% Document code starts here %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\maketitle
+\par
+
+
+\vspace{\baselineskip}
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+Dans le cadre de la validation du module logiciels et environnements évolués et sous la conduite de M. Pierre BOUDES et M. Flavien BREUVART, nous avons eu un certain nombre de workshop concernant multiple technologie dont Java Entreprise Edition et le Framework Spring.\par
+
+En vue de la validation du module, nous avons été amenés à effectuer un projet pour consolider nos connaissances en présentant un tutoriel ou une application traitant l’un des workshops vus en cours.\par
+
+Dans cette perspective, j’ai choisi de présenter un tutoriel concernant un sujet traiter en cours qui le développement JEE moyennant le Framework Spring en introduisant un Frontend différent de celui traiter en cours consistant en l’utilisation du Java Server Faces et plus précisément PrimeFaces.\par
+
+Le rapport sera uploadé sur Github dans un repo public sur ce lien : \par
+
+\begin{Center}
+https://github.com/superibra/LEE\_Project
+\end{Center}\par
+
+\section{Prérequis}
+Les prérequis en termes de logiciel concernant ce tutoriel sont :\par
+
+\begin{itemize}
+	\item Un IDE (idéalement IntelliJ)\par
+
+	\item Maven pour la gestion automatique des dépendances\par
+
+	\item JDK
+\end{itemize}\par
+
+Les prérequis en termes de connaissance sont :\par
+
+\begin{itemize}
+	\item Développement Java et connaissance des concepts d’injection de dépendance et de développement avec Spring et JEE en général.\par
+
+	\item Connaissance en JSP ou même HTML\par
+
+	\item Paradigme objet
+\end{itemize}\par
+
+Dans ce tutoriel, on ne va pas utiliser une base de données pour le stockage des données vu qu’on s’intéresse à intégrer des notions de Frontend seulement.\par
+
+\section{Environnement technologique}
+\subsection{Spring Web MVC}
+Spring Web MVC est un Framework qui offre aux développeurs qui souhaitent utiliser l’architecture Model-View-Controller pour leurs application Web des composants prêt à l’emploi pour réaliser cette architecture d’une manière à permettre un développement respectant un couplage faible entre composant.\par
+
+\subsection{Java Server Faces}
+Java Server Faces (JSF) est une évolution arriver après plusieurs tentatives d’évolution sur JSP. JSF est un Framework adéquat au développement selon une architecture MVC vu qu’il ne permet pas l’exécution de code Java dans les pages JSF contrairement au JSP et de plus il est orienté composant vu que son développement et inspiré du développement d’application client lourd avec Swing.\par
+
+\subsection{PrimeFaces}
+PrimeFaces est une librairie légère qui permet de faciliter le développement Frontend et qui peut être couplé à JSF, Angular ou React. Généralement, la librairie est documentée sur le site officiel de PrimeFaces d’où on peut utiliser et personnaliser des extraits de codes prêt à l’utilisation grâce au showcase inclut dans le site.\par
+
+Pour finir, la légèreté de la librairie vient du fait que c’est un seul jar qui ne comprend aucune dépendance.\par
+
+\section{Réalisation}
+
+\vspace{\baselineskip}
+Le tutoriel de développement Spring moyennant comme Front End la combinaison de JSF et Primefaces va être décrit dans ce rapport par les étapes de création du projet, sa configuration et son développement.\par
+
+Pour relier notre tutoriel à un cas d’utilisation réel, on a choisi de créer un projet de gestion de client qui nous permet de mettre en œuvre notre tutoriel avec un exemple facile à comprendre et prêt de la Au départ, on va créer un nouveau projet Maven en utilisant votre IntelliJ avec une configuration du pom.xml qui sera créer avec le projet selon nos besoins. On ajoute la section concernant les dépendances de Spring et de JSF dans le fichier pom.xml. Les dépendances existent sur le site de Maven.\par
+
+Concernant le serveur d’application, on va utiliser un serveur Wildfly et pour éviter un conflit de dépendance pour JSF car une version est aussi fournie sur le serveur Wildfly, on ajoute le scope Provided à la déclaration de la dépendance dans le fichier pom.xml. Une capture du fichier pom.xml et ci-dessous :\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 1 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=3.1in,height=3.4in]{./media/image1.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 1 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+Avant de passer au développement de l’application web, on doit crée un descripteur de déploiement web qui permettra un déploiement réussi de l’application après son développement et en suivant une hiérarchie de dossiers bien défini avec les fichiers de configuration nécessaire qui est présenter ci-dessous :\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 2 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=1.59in,height=1.06in]{./media/image2.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 2 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+Les fichiers de configurations présent dans cette hiérarchie de fichiers et de dossiers dont le descripteur de déploiement web sont développer comme suit : \par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 3 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=3.59in,height=2.48in]{./media/image3.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 3 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+Web.xml : Descripteur de déploiement web
+\end{Center}\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 4 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=5.42in,height=1.04in]{./media/image4.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 4 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+Faces-config.xml : fichier de configuration de JSF
+\end{Center}\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 5 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=2.52in,height=0.75in]{./media/image5.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 5 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+MANIFEST.MF : fichier de configuration pour le jar (class main, chemins)
+\end{Center}\par
+
+À la suite de cela, nous allons crée un ensemble de classe qui permettra d’avoir une base de données fictive dans la RAM.\par
+
+La première classe sera une classe client contenant un nombre réduit d’attribut puis une classe qui permet de gérer la classe client contenant les annotations nécessaires mettant en évidence le rôle de la classe (@ManagedBean, @ViewScoped). \par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 6 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=2.33in,height=2.73in]{./media/image6.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 6 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+Classe client
+\end{Center}\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 7 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=3.12in,height=2.53in]{./media/image7.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 7 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+Managed Bean
+\end{Center}\par
+
+Après la partie Back-End fictive de l’application, on commence par créer le fichier xhtml qui va contenir notre Front-End et qui est un mélange entre HTML, les balises spécifiques pour JSF et les balises Primefaces. Pour commencer, le fichier xhtml va contenir un contenue simple avec des indications sur les namespaces utilisés pour l’invocation des balises dont les balises de la librairie Primefaces et qui seront notées par la lettre p dans une étape ultérieure.\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 8 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=2.77in,height=1.72in]{./media/image8.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 8 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+Fichier XHTML (nommé index.xhtml)
+\end{Center}\par
+
+Pour le bon fonctionnement de notre application web et l’environnement Front-End (Servlet 3.0+) on développe une classe implémentant l'interface WebApplicationInitializer permettant de démarrer le contexte du servlet et voici le développement de cette classe :\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 9 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=5.7in,height=2.09in]{./media/image9.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 9 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+WebApplicationInitializer
+\end{Center}\par
+
+La dernière étape pour mettre en place et déployer une application en utilisant la librairie Primefaces en relation avec JSF et Spring est de changer l’implémentation du fichier XHTML en rajoutant le namespace de la librairie et en effectuant un affichage simple des informations déclarer dans le ManagedBean.\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 10 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=4.3in,height=2.13in]{./media/image10.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 10 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+\begin{Center}
+Index
+\end{Center}\par
+
+Pour déployer notre application, on aura recours à un serveur Wildfly en executant la commande\par
+
+-mvn clean install. \par
+
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+Après l’exécution, on aura la page qui affiche les clients ajouter dans notre base de données fictive en utilisant un tableau muni de filtres pour chaque colonne qui est caractéristique de la librairie Primefaces.\par
+
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 11 starts here %%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\begin{Center}
+		\includegraphics[width=6.3in,height=1.12in]{./media/image11.png}
+	\end{Center}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%% Figure/Image No: 11 Ends here %%%%%%%%%%%%%%%%%%%%
+
+\par
+
+
+\vspace{\baselineskip}
+
+\printbibliography
+\end{document}
